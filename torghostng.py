@@ -14,7 +14,7 @@ except ModuleNotFoundError:
     exit()
 
 SLEEP_TIME = 1.0
-VERSION = "1.5"
+VERSION = "1.6"
 
 def the_argparse(language=English):
         parser = argparse.ArgumentParser(usage="torghostng [-h] -s|-x|-id|-r|-m|-c|-l|--list")
@@ -221,7 +221,7 @@ def check_update():
         sleep(SLEEP_TIME)
         print(language.done)
 
-        if (version != VERSION) == True:
+        if (version not in VERSION) == True:
             print(language.outofdate)
             choice = str(input(language.wanna_update))
             
@@ -399,6 +399,9 @@ def start_connecting(id=None,privoxy=None):
     except KeyboardInterrupt:
         print()
         exit()
+    except FileNotFoundError:
+        system('touch {}'.format(Sysctl))
+        start_connecting(id,privoxy)
 
 
 def stop_connecting():
