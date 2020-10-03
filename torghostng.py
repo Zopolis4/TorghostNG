@@ -282,7 +282,7 @@ def check_ip():
         
         print(language.your_ip.format('IPv4') + color.BOLD + ipv4_address + color.END)
         
-        if ipv6_address != ipv4_address:
+        if (ipv6_address != ipv4_address) and len(ipv6_address) > 0:
             print(language.your_ip.format('IPv6') + color.BOLD + ipv6_address + color.END)
 
     except KeyboardInterrupt:
