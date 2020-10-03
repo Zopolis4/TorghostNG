@@ -27,9 +27,9 @@ class English:
     uninstalled = icon.success + " TorghostNG has been uninstalled"
     installed = icon.success + " {} has been installed"
     already_installed = icon.info + " {} is already installed"
-    description = """TorghostNG 1.5 - Make all your internet traffic anonymized through Tor proxy
+    description = """TorghostNG 1.6 - Make all your internet traffic anonymized through Tor proxy
 Rewritten from TorGhost with Python 3"""
-    root_please = icon.error + " You must be root, use 'sudo torghostng'"
+    root_please = icon.error + " You must be root, use 'sudo TorghostNG'"
     sorry_windows = icon.error + " Sorry, TorghostNG is not designed for Windows 😛 Use Tor Browser pls"
     sorry_some_os = """I'm sorry, you have to install Tor and macchanger from source by yourself :v I'm too lazy
 Tor: https://github.com/torproject/tor
@@ -104,7 +104,7 @@ class Vietnamese(English):
     uninstalled = icon.success + " TorghostNG đã được gỡ cài đặt"
     installed = icon.success + " {} đã được cài đặt"
     already_installed = icon.info + " {} đã được cài đặt sẵn"
-    description = """TorghostNG 1.5 - Giúp bạn kết nối Internet ẩn danh qua Tor
+    description = """TorghostNG 1.6 - Giúp bạn kết nối Internet ẩn danh qua Tor
 Được gõ lại từ TorGhost bằng Python 3"""
     root_please = icon.error + " Phải chạy TorghostNG với quyền root nha, thử 'sudo torghostng' xem"
     sorry_windows = icon.error + " Xin lỗi các bạn dùng Windows nhá ☹ Các bạn dùng Tor Brower nha"
