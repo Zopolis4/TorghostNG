@@ -29,7 +29,7 @@ class English:
     already_installed = icon.info + " {} is already installed"
     description = """TorghostNG 1.5 - Make all your internet traffic anonymized through Tor proxy
 Rewritten from TorGhost with Python 3"""
-    root_please = icon.error + " You must be root, use 'sudo TorghostNG'"
+    root_please = icon.error + " You must be root, use 'sudo torghostng'"
     sorry_windows = icon.error + " Sorry, TorghostNG is not designed for Windows 😛 Use Tor Browser pls"
     sorry_some_os = """I'm sorry, you have to install Tor and macchanger from source by yourself :v I'm too lazy
 Tor: https://github.com/torproject/tor
