@@ -123,7 +123,7 @@ Version 1.1
 ![TorghostNG's Installtion](https://github.com/GitHackTools/Store-the-pictures/blob/master/TorghostNG%201.6%20installation.png?raw=true)
 * Connecting to Tor with Privoxy
 
-![Connecting to Tor with Privoxy - TorghostNG](https://github.com/GitHackTools/Store-the-pictures/blob/master/TorghostNG 1.6 installation.png)
+![Connecting to Tor with Privoxy - TorghostNG](https://github.com/GitHackTools/Store-the-pictures/blob/master/TorghostNG%201.6%20installation.png)
 
 * Connecting to TOR exitnode in US with Privoxy
 
