@@ -166,11 +166,7 @@ def install_package(package):
                     system(INSTALL_PACKAGES + 'net-tools-20181103_0eebece-x86_64-1.txz')
                 
             else:
-                if package == 'pip3':
-                    package = 'python3-pip'
-                    if path.isfile('/usr/bin/pacman') == True: package = 'python-pip'
-                        
-                elif package == 'netstat': package = 'net-tools'
+                if package == 'netstat': package = 'net-tools'
 
                 system(INSTALL_PACKAGES + package)
 
@@ -188,23 +184,11 @@ def install_package(package):
         exit()
 
 
-def pyinstaller():
+def install_torghostng():
     try:
-        system('pip2 uninstall pyinstaller')
-
-        if path.isfile('/usr/bin/pyinstaller') == True:
-            print(language.already_installed.format('PyInstaller'))
-            
-        else:
-            print(language.installing.format('PyInstaller'))
-            system('pip3 install pyinstaller')
-            
-            print(icon.success + language.done)
-            print(language.installed.format('PyInstaller'))
-            
         print(language.installing.format('TorghostNG'))
-        system('pyinstaller --onefile torghostng.py')
-        system('cp -r dist/torghostng /usr/bin && cp -r torngconf /usr/bin')
+        system('cp -r torghostng.py /usr/bin && cp -r torngconf /usr/bin')
+        system('mv /usr/bin/torghostng.py /usr/bin/torghostng')
         system('chmod +x /usr/bin/torghostng')
         
         print(icon.success + language.done)
@@ -219,6 +203,6 @@ packages = ['tor','macchanger','privoxy','netstat','pip3']
 for package in packages:
     install_package(package)
 
-pyinstaller()
+install_torghostng()
 print(language.video_tutorials)
 exit()
