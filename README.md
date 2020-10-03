@@ -10,8 +10,8 @@ TorghostNG was tested on:
 * Manjaro
 * ...
 
-# What's new in TorghostNG 1.5
-* TorghostNG 1.4 is very buggy so version 1.5 is here to fix it :smile:
+# What's new in TorghostNG 1.6
+* fIx SoMe BuGs
 
 # What is Privoxy?
 > Privoxy is a non-caching web proxy with advanced filtering capabilities for enhancing privacy, modifying web page data and HTTP headers, controlling access, and removing ads and other obnoxious Internet junk. Privoxy has a flexible configuration and can be customized to suit individual needs and tastes. It has application for both stand-alone systems and multi-user networks.
@@ -93,6 +93,9 @@ It's recommended that you should use [NoScript](https://noscript.net) before bef
 ![Don't torrent over Tor, please](https://github.com/GitHackTools/Store-the-pictures/raw/master/Don't%20torrent%20over%20Tor.png)
 
 # Changes log
+Version 1.6
+* Fix some bugs
+
 Version 1.5
 * Fix bugs of version 1.4
 
