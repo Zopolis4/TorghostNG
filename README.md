@@ -1,5 +1,5 @@
 # About TorghostNG
-![TorghostNG now supports Privoxy](https://github.com/GitHackTools/Store-the-pictures/blob/master/TorghostNG%20%20Privoxy.png)
+**TorghostNG now supports Privoxy**
 
 TorghostNG is a tool that make all your internet traffic anonymized through Tor network.
 
@@ -118,10 +118,12 @@ Version 1.1
 * Block BitTorrent traffic
 * Auto disable IPv6 before connecting to Tor
 
-# Screenshots of Torghost (Version 1.0 and 1.5)
+# Screenshots of Torghost (Version 1.0, 1.5 and 1.6)
+* TorghostNG's Installtion
+![TorghostNG's Installtion](https://github.com/GitHackTools/Store-the-pictures/blob/master/TorghostNG%201.6%20installation.png?raw=true)
 * Connecting to Tor with Privoxy
 
-![Connecting to Tor with Privoxy - TorghostNG](https://github.com/GitHackTools/Store-the-pictures/blob/master/Connecting%20to%20Tor%20with%20Privoxy%20-%20TorghostNG.png)
+![Connecting to Tor with Privoxy - TorghostNG](https://github.com/GitHackTools/Store-the-pictures/blob/master/TorghostNG 1.6 installation.png)
 
 * Connecting to TOR exitnode in US with Privoxy
 
