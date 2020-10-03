@@ -12,6 +12,7 @@ TorghostNG was tested on:
 
 # What's new in TorghostNG 1.6
 * fIx SoMe BuGs
+* Faster installation
 
 # What is Privoxy?
 > Privoxy is a non-caching web proxy with advanced filtering capabilities for enhancing privacy, modifying web page data and HTTP headers, controlling access, and removing ads and other obnoxious Internet junk. Privoxy has a flexible configuration and can be customized to suit individual needs and tastes. It has application for both stand-alone systems and multi-user networks.
@@ -95,6 +96,7 @@ It's recommended that you should use [NoScript](https://noscript.net) before bef
 # Changes log
 Version 1.6
 * Fix some bugs
+* Faster Installation
 
 Version 1.5
 * Fix bugs of version 1.4
