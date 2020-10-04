@@ -11,6 +11,7 @@ TorghostNG was tested on:
 * ...
 
 # What's new in TorghostNG 1.7
+* Fix updating 
 * Fix "Checking Tor connection" loop (by installing `curl`)
 
 # What's new in TorghostNG 1.6
@@ -98,6 +99,7 @@ It's recommended that you should use [NoScript](https://noscript.net) before bef
 
 # Changes log
 Version 1.7
+* Fix updating error
 * Fix "Checking Tor connection" loop (by installing `curl`)
 
 Version 1.6
