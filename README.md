@@ -10,6 +10,9 @@ TorghostNG was tested on:
 * Manjaro
 * ...
 
+# What's new in TorghostNG 1.7
+* Fix "Checking Tor connection" loop (by installing `curl`)
+
 # What's new in TorghostNG 1.6
 * fIx SoMe BuGs
 * Faster installation
@@ -94,6 +97,9 @@ It's recommended that you should use [NoScript](https://noscript.net) before bef
 ![Don't torrent over Tor, please](https://github.com/GitHackTools/Store-the-pictures/raw/master/Don't%20torrent%20over%20Tor.png)
 
 # Changes log
+Version 1.7
+* Fix "Checking Tor connection" loop (by installing `curl`)
+
 Version 1.6
 * Fix some bugs
 * Faster Installation
@@ -118,9 +124,9 @@ Version 1.1
 * Block BitTorrent traffic
 * Auto disable IPv6 before connecting to Tor
 
-# Screenshots of Torghost (Version 1.0, 1.5 and 1.6)
+# Screenshots of Torghost (Version 1.0, 1.5 and 1.7)
 * TorghostNG's Installtion
-![TorghostNG's Installtion](https://github.com/GitHackTools/Store-the-pictures/blob/master/TorghostNG%201.6%20installation.png?raw=true)
+![TorghostNG's Installtion](https://github.com/GitHackTools/Store-the-pictures/blob/master/TorghostNG%201.7%20installation.png)
 * Connecting to Tor with Privoxy
 
 ![Connecting to Tor with Privoxy - TorghostNG](https://github.com/GitHackTools/Store-the-pictures/raw/master/Connecting%20to%20Tor%20with%20Privoxy%20-%20TorghostNG.png)
