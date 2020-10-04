@@ -138,7 +138,7 @@ export socks4_proxy=
 export socks4a_proxy="""
 
 update_commands = """cd ~ && rm -rf TorghostNG
-git clone https://github.com/gitkern3l/TorghostNG
+git clone https://github.com/githacktools/TorghostNG
 cd TorghostNG
 sudo python3 install.py && sudo python3 install.py"""
 
@@ -217,7 +217,7 @@ def check_windows_check_root():
 def check_update():
     try:
         print(language.checking_update, end='', flush=True)
-        version = getoutput('curl -s --max-time 60 https://raw.githubusercontent.com/gitkern3l/TorghostNG/master/torngconf/Version')
+        version = getoutput('curl -s --max-time 60 https://raw.githubusercontent.com/githacktools/TorghostNG/master/torngconf/Version')
         sleep(SLEEP_TIME)
         print(language.done)
 
