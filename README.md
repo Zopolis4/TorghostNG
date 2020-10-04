@@ -1,5 +1,6 @@
 # About TorghostNG
 **TorghostNG now supports Privoxy**
+**Hope you can contribute new language to TorghostNG**
 
 TorghostNG is a tool that make all your internet traffic anonymized through Tor network.
 
@@ -29,7 +30,7 @@ From [Privoxy FAQ 4.7](https://privoxy.org/faq/misc.html).
 
 # Before you use TorghostNG
 * For the goodness of Tor network, BitTorrent traffic will be blocked by iptables. Although you can bypass it with some tweaks with your torrent client 😥. It's difficult to completely block all torrent traffic.
-* For security reason, TorghostNG is gonna disable IPv6 to prevent IPv6 leaks (it happened to me lmao).
+* For security reason, TorghostNG will disable IPv6 to prevent IPv6 leaks (it happened to me lmao).
 
 # Installing TorghostNG
 TorghostNG currently supports:
