@@ -1,7 +1,7 @@
 # About TorghostNG
 **TorghostNG now supports Privoxy**
 
-**Hope you can contribute new language to TorghostNG**
+**I hope you can contribute new language to TorghostNG**
 
 TorghostNG is a tool that make all your internet traffic anonymized through Tor network.
 
