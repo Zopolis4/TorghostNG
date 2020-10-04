@@ -153,9 +153,9 @@ def install_package(package):
                     system('wget https://slack.conraid.net/repository/slackware64-current/macchanger/macchanger-1.7.0-x86_64-5cf.txz')
                     system(INSTALL_PACKAGES + 'macchanger-1.7.0-x86_64-5cf.txz')
                     
-                elif package == 'pip3':
-                    system('wget https://packages.slackonly.com/pub/packages/14.1-x86_64/python/python3/python3-3.5.1-x86_64-1_slack.txz')
-                    system(INSTALL_PACKAGES + 'python3-3.5.1-x86_64-1_slack.txz')
+                elif package == 'curl':
+                    system('wget http://slackware.cs.utah.edu/pub/slackware/slackware64-14.2/patches/packages/curl-7.72.0-x86_64-1_slack14.2.txz')
+                    system(INSTALL_PACKAGES + '--install-new curl-7.72.0-x86_64-1_slack14.2.txz')
                     
                 elif package == 'privoxy':
                     system('wget https://packages.slackonly.com/pub/packages/14.2-x86_64/network/privoxy/privoxy-3.0.28-x86_64-1_slonly.txz')
@@ -199,7 +199,7 @@ def install_torghostng():
         exit()
 
 
-packages = ['tor','macchanger','privoxy','netstat','pip3']
+packages = ['tor','macchanger','privoxy','netstat','curl']
 for package in packages:
     install_package(package)
 
