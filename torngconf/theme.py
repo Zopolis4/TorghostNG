@@ -27,7 +27,7 @@ class English:
     uninstalled = icon.success + " TorghostNG has been uninstalled"
     installed = icon.success + " {} has been installed"
     already_installed = icon.info + " {} is already installed"
-    description = """TorghostNG 1.6 - Make all your internet traffic anonymized through Tor proxy
+    description = """TorghostNG 1.7 - Make all your internet traffic anonymized through Tor proxy
 Rewritten from TorGhost with Python 3"""
     root_please = icon.error + " You must be root, use 'sudo TorghostNG'"
     sorry_windows = icon.error + " Sorry, TorghostNG is not designed for Windows 😛 Use Tor Browser pls"
@@ -72,8 +72,8 @@ macchanger: https://github.com/alobbs/macchanger"""
     restoring_configuration = icon.process + " Restoring {} configuration..."
     ipv6_alreay_disabled = icon.info + " IPv6 is already disabled"
     disabling_ipv6 = icon.process + " Disabling IPv6..."
-    stopping_tor = icon.process + " Stop Tor service..."
-    starting_tor = icon.process + " Start new Tor service..."
+    stopping_tor = icon.process + " Stopping Tor service..."
+    starting_tor = icon.process + " Starting new Tor service..."
     changing_tor_circuit = icon.process + " Changing Tor circuit..."
     setting_iptables = icon.process + " Setting up iptables rules..."
     flushing_iptables = icon.process + " Flushing iptables, resetting to default..."
@@ -104,7 +104,7 @@ class Vietnamese(English):
     uninstalled = icon.success + " TorghostNG đã được gỡ cài đặt"
     installed = icon.success + " {} đã được cài đặt"
     already_installed = icon.info + " {} đã được cài đặt sẵn"
-    description = """TorghostNG 1.6 - Giúp bạn kết nối Internet ẩn danh qua Tor
+    description = """TorghostNG 1.7 - Giúp bạn kết nối Internet ẩn danh qua Tor
 Được gõ lại từ TorGhost bằng Python 3"""
     root_please = icon.error + " Phải chạy TorghostNG với quyền root nha, thử 'sudo torghostng' xem"
     sorry_windows = icon.error + " Xin lỗi các bạn dùng Windows nhá ☹ Các bạn dùng Tor Brower nha"
