@@ -296,7 +296,7 @@ def start_connecting(id=None,privoxy=None):
         
         # Disable IPv6
         if DISABLE_IPv6 == open(Sysctl).read():
-            print(language.ipv6_alreay_disabled)
+            print(language.ipv6_already_disabled)
             
         else:
             print(language.disable_ipv6_info)
