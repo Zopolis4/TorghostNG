@@ -129,8 +129,8 @@ Version 1.1
 * Auto disable IPv6 before connecting to Tor
 
 # Screenshots of Torghost (Version 1.0, 1.5 and 1.7)
-* TorghostNG's Installtion
-![TorghostNG's Installtion](https://github.com/GitHackTools/Store-the-pictures/blob/master/TorghostNG%201.7%20installation.png)
+* TorghostNG's Installation
+![TorghostNG's Installation](https://github.com/GitHackTools/Store-the-pictures/blob/master/TorghostNG%201.7%20installation.png)
 * Connecting to Tor with Privoxy
 
 ![Connecting to Tor with Privoxy - TorghostNG](https://github.com/GitHackTools/Store-the-pictures/raw/master/Connecting%20to%20Tor%20with%20Privoxy%20-%20TorghostNG.png)
