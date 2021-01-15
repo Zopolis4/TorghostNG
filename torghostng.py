@@ -4,17 +4,17 @@ import argparse
 from time import sleep
 from json import JSONDecodeError, loads
 from sys import argv, exit
-from subprocess import getoutput
-from os import geteuid, system, path, name
+from os import geteuid, system, name
 
 try:
     from torngconf.theme import *
+    from torngconf.configs import *
 except ModuleNotFoundError:
     print("TorghostNG is lacking its needed files. Reinstall TorghostNG from Github pls")
     exit()
 
 SLEEP_TIME = 1.0
-VERSION = "1.7"
+VERSION = "2.0"
 
 def the_argparse(language=English):
         parser = argparse.ArgumentParser(usage="torghostng [-h] -s|-x|-id|-r|-m|-c|-l|--list")
@@ -40,107 +40,10 @@ def the_argparse(language=English):
         return parser.parse_args()
 
 
-if (path.isfile('/usr/bin/upgradepkg') == True) or (path.isfile('/usr/bin/torngconf/langconf.txt') == False):
-    LANGCONF = 'torngconf/langconf.txt'
+if (path.isfile('/usr/bin/upgradepkg') == True) or (path.isfile('/usr/bin/torngconf/langconf') == False):
+    LANGCONF = 'torngconf/langconf'
 else:
-    LANGCONF = '/usr/bin/torngconf/langconf.txt'
-
-if path.isfile('/usr/bin/apt') == True:
-    TOR_USER = 'debian-tor'
-else:
-    TOR_USER = 'tor'
-
-Torrc = '/etc/tor/torngrc'
-resolv = '/etc/resolv.conf'
-Sysctl = '/etc/sysctl.conf'
-Privoxy = '/etc/privoxy/config'
-
-TOR_UID = getoutput('id -ur {}'.format(TOR_USER))
-
-FIX_DNS = """nameserver 1.1.1.1
-nameserver 1.0.0.1
-nameserver 2606:4700:4700::1111
-nameserver 2606:4700:4700::1001"""
-
-DISABLE_IPv6 = """net.ipv6.conf.all.disable_ipv6 = 1
-net.ipv6.conf.default.disable_ipv6 = 1"""
-
-resolvConfig = 'nameserver 127.0.0.1'
-
-privoxy_conf = """listen-address 127.0.0.1:8118
-forward-socks5 / 127.0.0.1:9040 .
-forward-socks4 / 127.0.0.1:9040 .
-forward-socks4a / 127.0.0.1:9040 ."""
-
-TorrcConfig = """VirtualAddrNetwork 10.0.0.0/10
-AutomapHostsOnResolve 1
-TransPort 9040
-DNSPort 5353
-ControlPort 9051
-RunAsDaemon 1"""
-
-TorrcConfig_exitnode = """VirtualAddrNetwork 10.0.0.0/10
-AutomapHostsOnResolve 1
-TransPort 9040
-DNSPort 5353
-ControlPort 9051
-RunAsDaemon 1
-ExitNodes {%s}"""
-
-iptables_rules = """NON_TOR="192.168.1.0/24 192.168.0.0/24"
-TOR_UID={}
-TRANS_PORT="9040"
-
-iptables -F
-iptables -t nat -F
-
-iptables -t nat -A OUTPUT -m owner --uid-owner $TOR_UID -j RETURN
-iptables -t nat -A OUTPUT -p udp --dport 53 -j REDIRECT --to-ports 5353
-for NET in $NON_TOR 127.0.0.0/9 127.128.0.0/10; do
- iptables -t nat -A OUTPUT -d $NET -j RETURN
-done
-iptables -t nat -A OUTPUT -p tcp --syn -j REDIRECT --to-ports $TRANS_PORT
-
-iptables -A OUTPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-for NET in $NON_TOR 127.0.0.0/8; do
- iptables -A OUTPUT -d $NET -j ACCEPT
-done
-iptables -A OUTPUT -m owner --uid-owner $TOR_UID -j ACCEPT
-iptables -A OUTPUT -j REJECT
-
-iptables -A FORWARD -m string --string "BitTorrent" --algo bm --to 65535 -j DROP
-iptables -A FORWARD -m string --string "BitTorrent protocol" --algo bm --to 65535 -j DROP
-iptables -A FORWARD -m string --string "peer_id=" --algo bm --to 65535 -j DROP
-iptables -A FORWARD -m string --string ".torrent" --algo bm --to 65535 -j DROP
-iptables -A FORWARD -m string --string "announce.php?passkey=" --algo bm --to 65535 -j DROP
-iptables -A FORWARD -m string --string "torrent" --algo bm --to 65535 -j DROP
-iptables -A FORWARD -m string --string "announce" --algo bm --to 65535 -j DROP
-iptables -A FORWARD -m string --string "info_hash" --algo bm --to 65535 -j DROP""".format(TOR_UID)
-
-IpFlush = """iptables -P INPUT ACCEPT
-iptables -P FORWARD ACCEPT
-iptables -P OUTPUT ACCEPT
-iptables -t nat -F
-iptables -t mangle -F
-iptables -F
-iptables -X"""
-
-set_proxy="""export https_proxy=127.0.0.1:8118
-export http_proxy=127.0.0.1:8118
-export socks5_proxy=127.0.0.1:9040
-export socks4_proxy=127.0.0.1:9040
-export socks4a_proxy=127.0.0.1:9040"""
-
-rm_proxy="""export https_proxy=
-export http_proxy=
-export socks5_proxy=
-export socks4_proxy=
-export socks4a_proxy="""
-
-update_commands = """cd ~ && rm -rf TorghostNG
-git clone https://github.com/githacktools/TorghostNG
-cd TorghostNG
-sudo python3 install.py && sudo python3 install.py"""
+    LANGCONF = '/usr/bin/torngconf/langconf'
 
 
 def banner():
@@ -182,21 +85,26 @@ def choose_lang(language=English):
             choice = int(input(language.choose_your_lang))
             
             if choice == 1:
-                print(English.applying_language)
-                file_lang.write("English")
                 language = English
-    
+                check_windows_check_root()
+                file_lang.write("English")
             
             elif choice == 2:
-                print(Vietnamese.applying_language)
-                file_lang.write("Vietnamese")
                 language = Vietnamese
-
+                check_windows_check_root()
+                file_lang.write("Vietnamese")
+                
+            elif choice == 3:
+                lannguage = German
+                check_windows_check_root()
+                file_lang.write("German")
+                
             else:
                 print()
                 print(language.invalid_choice)
-                choose_lang()
-
+                choose_lang(language)
+            
+            print(language.applying_language)
             file_lang.close()
             return language
 
@@ -204,18 +112,35 @@ def choose_lang(language=English):
         print()
         exit()
 
-def check_windows_check_root():
-    if name == "nt":
-        print(English.sorry_windows)
-        exit()
+    except ValueError:
+        choose_lang()
+
+
+def check_windows_check_root(os=None):
+    if os == "windows":
+        if name == "nt":
+            print(English.sorry_windows)
+            exit()
     
-    if geteuid() != 0:
-        print(language.root_please)
+    elif geteuid() != 0:
+        print(English.root_please)
+        exit()
+
+        
+def check_dependencies(dependence):
+    if path.isfile("/usr/bin/" + dependence) == False:
+            
+        if dependence == "netstat":
+            dependence = "net-tools"
+
+        print(language.install_pls.format(dependence))
         exit()
 
 
 def check_update():
     try:
+        check_dependencies('curl')
+
         print(language.checking_update, end='', flush=True)
         version = getoutput('curl -s --max-time 60 https://raw.githubusercontent.com/githacktools/TorghostNG/master/torngconf/Version')
         sleep(SLEEP_TIME)
@@ -226,6 +151,7 @@ def check_update():
             choice = str(input(language.wanna_update))
             
             if choice[0].upper() == "Y":
+                check_windows_check_root()
                 print(language.updating.format(version))
                 system(update_commands)
                 exit()
@@ -240,6 +166,8 @@ def check_update():
 
 def check_tor(status):
     try:
+        check_dependencies('curl')
+
         print(language.checking_tor, end='', flush=True)
         sleep(SLEEP_TIME)
         tor_status = loads(getoutput("curl -s --max-time 60 https://check.torproject.org/api/ip"))
@@ -254,6 +182,8 @@ def check_tor(status):
                 print(language.tor_disconnected)
             
         else:
+            check_dependencies('netstat')
+
             if 'LISTEN' in getoutput('netstat -atnp | grep privoxy'):
                 print(language.tor_success.format('Privoxy'))
                 
@@ -274,6 +204,8 @@ def check_tor(status):
 
 def check_ip():
     try:
+        check_dependencies('curl')
+
         print(language.checking_ip, end='', flush=True)
         sleep(SLEEP_TIME)
         ipv4_address = getoutput('curl -s --max-time 60 https://api.ipify.org')
@@ -292,6 +224,8 @@ def check_ip():
 
 def start_connecting(id=None,privoxy=None):
     try:
+        check_windows_check_root()
+
         print(icon.process + ' ' + language.start_help)
         
         # Disable IPv6
@@ -314,6 +248,8 @@ def start_connecting(id=None,privoxy=None):
         getoutput('sudo sysctl -p')
 
         # Configure Torrc
+        check_dependencies('tor')
+
         if id != None: # Check for exit node
             torrconfig = TorrcConfig_exitnode %(id)
             print(language.id_tip)
@@ -351,6 +287,8 @@ def start_connecting(id=None,privoxy=None):
                     print(language.done)
 
         # Stop tor service
+        check_dependencies('tor')
+
         print(language.stopping_tor, end='', flush=True)
         system('systemctl stop tor')
         system('fuser -k 9051/tcp > /dev/null 2>&1')
@@ -359,6 +297,8 @@ def start_connecting(id=None,privoxy=None):
 
         # Configure and start Privoxy
         if privoxy == True:
+            check_dependencies('privoxy')
+
             system(set_proxy)
             
             if privoxy_conf == open(Privoxy).read():
@@ -377,6 +317,8 @@ def start_connecting(id=None,privoxy=None):
             system('systemctl start privoxy')
 
         # Start new tor service
+        check_dependencies ('tor')
+
         print(language.starting_tor, end='', flush=True)
         system('sudo -u {0} tor -f {1} > /dev/null'.format(TOR_USER, Torrc))
         sleep(SLEEP_TIME)
@@ -406,9 +348,13 @@ def start_connecting(id=None,privoxy=None):
 
 def stop_connecting():
     try:
+        check_windows_check_root()
+
         print(icon.process + ' ' + language.stop_help)
         
         # Restore Privoxy configuration
+        check_dependencies('netstat')
+
         if 'LISTEN' in getoutput('netstat -atnp | grep privoxy'):
             print(language.restoring_configuration.format('Privoxy'), end='', flush=True)
             
@@ -464,6 +410,10 @@ def stop_connecting():
 
 def change_tor_circuit():
     try:
+        check_windows_check_root()
+
+        check_dependencies('curl')
+
         print(language.changing_tor_circuit, end='', flush=True)
 
         tor_status = loads(getoutput("curl -s --max-time 60 https://check.torproject.org/api/ip"))
@@ -506,6 +456,8 @@ def changemac(interface):
 
 def fix_dns():
     try:
+        check_windows_check_root()
+
         print(language.fixing_dns, end='', flush=True)
         
         with open(resolv, mode='w') as file:
@@ -522,7 +474,7 @@ def fix_dns():
 
 if __name__ == "__main__":
     language = check_lang()
-    check_windows_check_root()
+    check_windows_check_root('windows')
     args = the_argparse(language)
 
     banner()
