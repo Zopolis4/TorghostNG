@@ -84,19 +84,19 @@ def choose_lang(language=English):
             print(language.language_list)
             choice = int(input(language.choose_your_lang))
             
+            if LANGCONF != 'torngconf/langconf':
+                check_windows_check_root()
+            
             if choice == 1:
                 language = English
-                check_windows_check_root()
                 file_lang.write("English")
             
             elif choice == 2:
                 language = Vietnamese
-                check_windows_check_root()
                 file_lang.write("Vietnamese")
                 
             elif choice == 3:
                 lannguage = German
-                check_windows_check_root()
                 file_lang.write("German")
                 
             else:
@@ -520,3 +520,5 @@ if __name__ == "__main__":
     if args.renew == True: change_tor_circuit()
 
 print(language.video_tutorials)
+
+
