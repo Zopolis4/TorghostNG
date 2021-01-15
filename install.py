@@ -3,7 +3,6 @@
 from torngconf.theme import *
 from time import sleep
 from os import geteuid, system, path, name
-from subprocess import getoutput
 
 
 def banner():
@@ -23,8 +22,8 @@ def check_windows_check_root():
 
 def check_lang():
     try:
-        if path.isfile('torngconf/langconf.txt') == True:
-            with open('torngconf/langconf.txt') as file_lang:
+        if path.isfile('torngconf/langconf') == True:
+            with open('torngconf/langconf') as file_lang:
                 language = eval(file_lang.readline())
 
                 file_lang.close()
@@ -50,18 +49,16 @@ def check_lang():
 
 def choose_lang(language=English):
     try:
-        with open('torngconf/langconf.txt', mode="w") as file_lang:            
+        with open('torngconf/langconf', mode="w") as file_lang:            
             print(language.language_list)
             choice = int(input(language.choose_your_lang))
             
             if choice == 1:
-                print(English.applying_language)
                 file_lang.write("English")
                 language = English
     
             
             elif choice == 2:
-                print(Vietnamese.applying_language)
                 file_lang.write("Vietnamese")
                 language = Vietnamese
 
@@ -70,6 +67,7 @@ def choose_lang(language=English):
                 print(language.invalid_choice)
                 choose_lang()
 
+            print(language.applying_language)
             file_lang.close()
             return language
 
@@ -171,7 +169,6 @@ def install_package(package):
                 system(INSTALL_PACKAGES + package)
 
             print(icon.success + language.done)
-                
             print(language.installed.format(package))
             
             if path.isfile('/usr/bin/upgradepkg') == True:
