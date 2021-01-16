@@ -12,13 +12,13 @@ TorghostNG was tested on:
 * Manjaro
 * ...
 
-# What's new in TorghostNG 1.7
-* Fix updating 
-* Fix "Checking Tor connection" loop (by installing `curl`)
-
-# What's new in TorghostNG 1.6
-* fIx SoMe BuGs
-* Faster installation
+# What's new in TorghostNG 2.0
+* Add a new language: German (Thank you, [Popescu-PfeifferMarc](https://github.com/Popescu-PfeifferMarc))
+* Change `langconf.txt` to `langconf`
+* Some functions **don't require root to run** anymore
+* Fix `Check Tor connection...` loops
+* Remove unneeded codes
+* Fix bugs
 
 # What is Privoxy?
 > Privoxy is a non-caching web proxy with advanced filtering capabilities for enhancing privacy, modifying web page data and HTTP headers, controlling access, and removing ads and other obnoxious Internet junk. Privoxy has a flexible configuration and can be customized to suit individual needs and tastes. It has application for both stand-alone systems and multi-user networks.
@@ -37,20 +37,15 @@ From [Privoxy FAQ 4.7](https://privoxy.org/faq/misc.html).
 TorghostNG currently supports:
 * GNU/Linux distros that based on Arch Linux
 * GNU/Linux distros that based on Debian/Ubuntu
-* GNU/Linux distros that based on Fedora, CentOS, RHEL, openSUSE
-* [Solus OS](https://getsol.us)
-* [Void Linux](https://voidlinux.org)
-* Anh the elder guy: [Slackware](http://slackware.com)
-* (Too much package managers for one day :v)
 
 To install TorghostNG, open your Terminal and enter these commands    
     
     git clone https://github.com/githacktools/TorghostNG
     cd TorghostNG
     sudo python3 install.py
-    sudo torghostng
+    torghostng -h
     
-But with Slackware, you use `sudo python3 torghostng.py` to run TorghostNG :v
+Or you can just type `python3 torghostng.py` to run TorghostNG :v
 
 # Help
     OPTIONS:
@@ -100,6 +95,14 @@ It's recommended that you should use [NoScript](https://noscript.net) before bef
 ![Don't torrent over Tor, please](https://github.com/GitHackTools/Store-the-pictures/raw/master/Don't%20torrent%20over%20Tor.png)
 
 # Changes log
+Version 2.0
+* Add a new language: German
+* Change `langconf.txt` to `langconf`
+* Some functions don't require ROOT to run anymore
+* Fix "Check Tor connection..." loops
+* Remove unneeded codes
+* Fix bugs
+
 Version 1.7
 * Fix updating error
 * Fix "Checking Tor connection" loop (by installing `curl`)
@@ -128,44 +131,26 @@ Version 1.1
 * Block BitTorrent traffic
 * Auto disable IPv6 before connecting to Tor
 
-# Screenshots of Torghost (Version 1.0, 1.5 and 1.7)
-* TorghostNG's Installation
-![TorghostNG's Installation](https://github.com/GitHackTools/Store-the-pictures/blob/master/TorghostNG%201.7%20installation.png)
-* Connecting to Tor with Privoxy
+# Screenshots of Torghost (Version 2.0)
+* TorghostNG 2.0's installation
 
-![Connecting to Tor with Privoxy - TorghostNG](https://github.com/GitHackTools/Store-the-pictures/raw/master/Connecting%20to%20Tor%20with%20Privoxy%20-%20TorghostNG.png)
+![Installation](https://github.com/GitHackTools/Store-the-pictures/blob/master/TorghostNG%202.0/TorghostNG%202%20Installation.png)
 
-* Connecting to TOR exitnode in US with Privoxy
+* TorghostNG 2.0 checking Tor status (**non-root**)
 
-![Connecting to TOR exitnode in US with Privoxy](https://github.com/GitHackTools/Store-the-pictures/blob/master/TorghostNG%20connecting%20to%20TOR%20exitnode%20in%20US%20with%20Privoxy.png)
+![Checking Tor status](https://github.com/GitHackTools/Store-the-pictures/blob/master/TorghostNG%202.0/TorghostNG%202%20check%20ip%20non-root.png)
 
-* Checking Tor Privoxy connection
+* TorghostNG 2.0 connecting to tor exit nodes in the US
 
-![Checking Tor Privoxy connection](https://github.com/GitHackTools/Store-the-pictures/blob/master/TorghostNG%20checking%20Tor%20Privoxy%20connection.png)
+![Connecting to the US](https://github.com/GitHackTools/Store-the-pictures/blob/master/TorghostNG%202.0/TorghostNG%202%20Connect%20to%20US.png)
 
-* Disconnecting from Tor and Privoxy
+* TorghostNG 2.0 connecting to Tor through Privoxy
 
-![Disconnecting from Tor and Privoxy](https://github.com/GitHackTools/Store-the-pictures/blob/master/TorghostNG%20disconnecting%20from%20Tor%20and%20Privoxy.png)
+![Connecting to Tor with Privoxy](https://github.com/GitHackTools/Store-the-pictures/blob/master/TorghostNG%202.0/TorghostNG%202%20Tor%20Privoxy.png)
 
-* Changing MAC address: `torghostng -m INTERFACE`
+* TorghostNG 2.0 in German
 
-![Changing MAC address with TorghostNG](https://github.com/GitHackTools/Store-the-pictures/raw/master/TorghostNG%20changing%20MAC%20address.png)
-
-* Checking IP address: `torghostng -c`
-
-![Checking IP address with TorghostNG](https://github.com/GitHackTools/Store-the-pictures/raw/master/TorghostNG%20checking%20IP%20address.png)
-
-* Disconnecting from Tor: `torghostng -x`
-
-![Disconnecting from Tor network with TorghostNG](https://github.com/GitHackTools/Store-the-pictures/raw/master/TorghostNG%20disconnecting%20from%20TOR.png)
-
-* Connecting to Tor exitnode in a specific country: `torghostng -id COUNTRY ID`
-
-![Connecting to TOR exitnode in a specific country](https://github.com/GitHackTools/Store-the-pictures/raw/master/TorghostNG%20connecting%20to%20TOR%20exitnode%20in%20US.png)
-
-* Uninstalling TorghostNG: `python3 install.py`
-
-![Uninstalling TorghostNG](https://github.com/GitHackTools/Store-the-pictures/raw/master/Uninstalling%20TorghostNG.png)
+![German](https://github.com/GitHackTools/Store-the-pictures/blob/master/TorghostNG%202.0/TorghostNG%202%20German.png)
 
 # Contact to the coder
 * Twitter: [@SecureGF](https://twitter.com/securegf)
@@ -174,7 +159,8 @@ Version 1.1
 
 # To-do lists
 * Block torrent, for you - Tor network
-* IPv6 (maybe?)
+* Support IPv6
+* Support more distros
 * GUI version
 * Fix bug, improve TorghostNG (always)
 
