@@ -13,7 +13,7 @@ TorghostNG was tested on:
 * ...
 
 # What's new in TorghostNG 2.0
-* Add a new language: German (Thank you, [Popescu-PfeifferMarc](https://github.com/Popescu-PfeifferMarc))
+* Add a new language: German 🇩🇪 (Thank you, [Popescu-PfeifferMarc](https://github.com/Popescu-PfeifferMarc))
 * Change `langconf.txt` to `langconf`
 * Some functions **don't require root to run** anymore
 * Fix `Check Tor connection...` loops
@@ -158,6 +158,7 @@ Version 1.1
 * Website: [Blogspot](https://githacktools.blogspot.com)
 
 # To-do lists
+* Add Russian 🇷🇺
 * Block torrent, for you - Tor network
 * Support IPv6
 * Support more distros
