@@ -118,10 +118,10 @@ Tor: https://github.com/torproject/tor
 macchanger: https://github.com/alobbs/macchanger"""
     sorry_bsd = "Mình đang tìm các hỗ trợ BSD, xin lỗi bạn :("
     current_language = icon.info + " Ngôn ngữ hiển thị hiện tại: "
-    language_list = icon.info + """ Danh sách các ngôn ngữ có sẵn:
-    1. Tiếng Anh
-    2. Tiếng Việt
-    3. Tiếng Đức"""
+    language_list = icon.info + """ List of languages:
+    1. English
+    2. Vietnamese
+    3. German"""
     choose_your_lang = icon.question + " Chọn ngôn ngữ của bạn (1-3): "
     wanna_change_lang = icon.question + " Muốn thay đổi ngôn ngữ hiển thị không? (y/n): "
     wanna_uninstall = icon.question + " Bạn muốn gỡ TorghostNG đi không (y/n): "
