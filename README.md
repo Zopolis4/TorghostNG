@@ -92,7 +92,7 @@ It's recommended that you should use [NoScript](https://noscript.net) before bef
 
 [Not anonymous: attack reveals BitTorrent users on Tor network](https://arstechnica.com/tech-policy/2011/04/not-anonymous-attack-reveals-bittorrent-users-on-tor-network)
 
-![Don't torrent over Tor, please](https://github.com/GitHackTools/Store-the-pictures/raw/master/Don't%20torrent%20over%20Tor.png)
+![Don't torrent over Tor, please](https://github.com/Zopolis4/TorghostNG/raw/test1/Don't%20torrent%20over%20Tor.png)
 
 # Changes log
 Version 2.0
