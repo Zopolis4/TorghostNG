@@ -97,8 +97,6 @@ macchanger: https://github.com/alobbs/macchanger"""
     torghostng_tip = icon.info + color.BOLD + " You can run TorghostNG with '{}'"
     dns_tip = icon.info + " If you have problem with resolving website address, use '--dns' to fix it"
     interface_error = icon.error + " There is no interface named {}. Changing failed"
-    video_tutorials = icon.info + """ If you have any questions, take a look at TorghostNG Tutorial Videos here: """+ color.BOLD +"""https://bit.ly/34TNglL"""+ color.END +"""
-    You will love it, i think :D"""
     
 class Vietnamese(English):
     options = "CÁC LỰA CHỌN"
@@ -178,7 +176,6 @@ macchanger: https://github.com/alobbs/macchanger"""
     torghostng_tip = icon.success + color.BOLD + " Bạn có thể chạy TorghostNG với lệnh '{}'"
     dns_tip = icon.info + " Nếu bạn gặp vấn đề với việc phân giải địa chỉ web, dùng '--dns' để sửa"
     interface_error = icon.error + " Không có interface nào tên {}. Thay đổi thất bại"
-    video_tutorials = icon.info + " Nếu có thắc mắc gì thì các cậu xem video hướng dẫn nha: "+ color.BOLD +"https://bit.ly/34TNglL"+ color.END
     
 class German(English):
     options = "OPTIONEN"
@@ -256,8 +253,6 @@ macchanger: https://github.com/alobbs/macchanger"""
     torghostng_tip = icon.info + color.BOLD + " Du kannst TorghostNG mit '{}' starten"
     dns_tip = icon.info + " Wenn du Probleme hast mit DNS, kannst du '--dns' benutzen um das Problem zu lösen"
     interface_error = icon.error + " Es existiert kein Netzwerkadapter namens {}. Änderung fehlgeschlagen"
-    video_tutorials = icon.info + """ Wenn du Fragen hast, kannst du dir TorghostNG Tutorial Videos hier anschauen: """+ color.BOLD +"""https://bit.ly/34TNglL"""+ color.END +"""
-    Ich denke die sollten dir gefallen:D"""
     
 the_banner = color.GREEN + """ _____               _               _   _   _  ____ 
 |_   _|__  _ __ __ _| |__   ___  ___| |_| \ | |/ ___|

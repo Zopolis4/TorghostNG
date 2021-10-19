@@ -89,7 +89,6 @@ def uninstall():
         else:
             print(language.torghostng_tip.format('torghostng') + color.END)
             
-        print(language.video_tutorials)
         exit()
             
     except KeyboardInterrupt:
@@ -173,7 +172,6 @@ def install_package(package):
             
             if path.isfile('/usr/bin/upgradepkg') == True:
                 print(language.torghostng_tip.format('python3 torghostng.py'))
-                print(language.video_tutorials)
                 exit()
             
     except KeyboardInterrupt:
@@ -201,5 +199,4 @@ for package in packages:
     install_package(package)
 
 install_torghostng()
-print(language.video_tutorials)
 exit()

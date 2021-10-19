@@ -142,7 +142,7 @@ def check_update():
         check_dependencies('curl')
 
         print(language.checking_update, end='', flush=True)
-        version = getoutput('curl -s --max-time 60 https://raw.githubusercontent.com/githacktools/TorghostNG/master/torngconf/Version')
+        version = getoutput('curl -s --max-time 60 https://raw.githubusercontent.com/Zopolis4/TorghostNG/master/torngconf/Version')
         sleep(SLEEP_TIME)
         print(language.done)
 
@@ -518,7 +518,4 @@ if __name__ == "__main__":
         exit()
         
     if args.renew == True: change_tor_circuit()
-
-print(language.video_tutorials)
-
 
