@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import argparse
 from time import sleep
 from json import JSONDecodeError, loads
@@ -7,30 +5,34 @@ from sys import argv, exit
 from os import geteuid, system, name
 
 try:
-    from torngconf.theme import *
-    from torngconf.configs import *
+    from neotgconf.theme import *
+    from neotgconf.configs import *
 except ModuleNotFoundError:
-    print("TorghostNG is lacking its needed files. Reinstall TorghostNG from Github pls")
+    print("NeoTorghost is lacking its needed files. Reinstalling NeoTorghost from Github...")
+    system("cd ..; rm -rf neotorghost NeoTorghost; git clone https://github.com/haudoudo/neotorghost.git")
+    print("Run install.py whenever you want, goodbye...")
     exit()
 
 SLEEP_TIME = 1.0
-VERSION = "2.0"
+VERSION = "1.0"
+LANGCONF = LANGCONF
 
 def the_argparse(language=English):
-        parser = argparse.ArgumentParser(usage="torghostng [-h] -s|-x|-id|-r|-m|-c|-l|--list")
+        parser = argparse.ArgumentParser(usage="neotorghost [-h] -s|-x|-i|-r|-m|-c|-p|-a|-l|-ll|-n")
         parser._optionals.title = language.options
-        parser.add_argument("-p","--privoxy", help=language.privoxy_help, action="store_true")
         parser.add_argument("-s","--start", help=language.start_help, action="store_true")
-        parser.add_argument("-x", "--stop", help=language.stop_help, action="store_true")
-        parser.add_argument("-r", "--renew", help=language.circuit_help, action="store_true")
-        parser.add_argument("-id", help=language.id_help, metavar=language.country_id, type=str)
-        parser.add_argument("-mac", help=language.changemac_help, metavar="INTERFACE", type=str)
+        parser.add_argument("-x","--stop", help=language.stop_help, action="store_true")
+        parser.add_argument("-r","--renew", help=language.circuit_help, action="store_true")
+        parser.add_argument("-i","--id", help=language.id_help, metavar=language.country_id, type=str)
+        parser.add_argument("-m","--mac", help=language.changemac_help, metavar="INTERFACE", type=str)
         parser.add_argument("-c","--checkip", help=language.checkip_help, action="store_true")
-        parser.add_argument("--dns", help=language.dns_help, action="store_true")
+        parser.add_argument("-d","--dns", help=language.dns_help, action="store_true")
+        parser.add_argument("-p","--privoxy", help=language.privoxy_help, action="store_true")
+        parser.add_argument("-a","--auto", help=language.auto_renew, action="store_true")
         parser.add_argument("-l","--language", help=language.language_help, action="store_true")
-        parser.add_argument("--list", help=language.language_list_help, action="store_true")
-        parser.add_argument("-u", "--update", help=language.update_help, action="store_true")
-        parser.add_argument("--nodelay", help=language.no_delay_help, action="store_true")
+        parser.add_argument("-ll","--list", help=language.language_list_help, action="store_true")
+        parser.add_argument("-u","--update", help=language.update_help, action="store_true")
+        parser.add_argument("-n","--nodelay", help=language.no_delay_help, action="store_true")
 
         if len(argv) == 1:
             banner()
@@ -40,16 +42,18 @@ def the_argparse(language=English):
         return parser.parse_args()
 
 
-if (path.isfile('/usr/bin/upgradepkg') == True) or (path.isfile('/usr/bin/torngconf/langconf') == False):
-    LANGCONF = 'torngconf/langconf'
-else:
-    LANGCONF = '/usr/bin/torngconf/langconf'
-
+if (path.isfile(USRBIN+'upgradepkg') == True) or (path.isfile(USRBIN+'neotgconf/langconf') == False):
+    LANGCONF = 'neotgconf/langconf'
 
 def banner():
     print(the_banner)
     print(language.description)
 
+def Auto(Start):
+    if Start == True: 
+        if path.isfile(STARTAUTO): system(f"bash {STARTAUTO}")
+    else:
+        if path.isfile(STOPAUTO): system(f"bash {STOPAUTO}")
 
 def check_lang():
     try:
@@ -74,7 +78,7 @@ def check_lang():
         language = choose_lang()
         return language
     except FileNotFoundError:
-        print("TorghostNG is lacking its needed files. Reinstall TorghostNG from Github pls")
+        print("NeoTorghost is lacking its needed files. Reinstall NeoTorghost from Github")
         exit()
 
 
@@ -84,7 +88,7 @@ def choose_lang(language=English):
             print(language.language_list)
             choice = int(input(language.choose_your_lang))
             
-            if LANGCONF != 'torngconf/langconf':
+            if LANGCONF != 'neotgconf/langconf':
                 check_windows_check_root()
             
             if choice == 1:
@@ -142,7 +146,7 @@ def check_update():
         check_dependencies('curl')
 
         print(language.checking_update, end='', flush=True)
-        version = getoutput('curl -s --max-time 60 https://raw.githubusercontent.com/Zopolis4/TorghostNG/master/torngconf/Version')
+        version = getoutput('curl -s --max-time 60 https://raw.githubusercontent.com/haudoudo/neotorghost/master/neotgconf/Version')
         sleep(SLEEP_TIME)
         print(language.done)
 
@@ -228,7 +232,6 @@ def start_connecting(id=None,privoxy=None):
 
         print(icon.process + ' ' + language.start_help)
         
-        # Disable IPv6
         if DISABLE_IPv6 == open(Sysctl).read():
             print(language.ipv6_already_disabled)
             
@@ -247,10 +250,9 @@ def start_connecting(id=None,privoxy=None):
 
         getoutput('sudo sysctl -p')
 
-        # Configure Torrc
         check_dependencies('tor')
 
-        if id != None: # Check for exit node
+        if id != None:
             torrconfig = TorrcConfig_exitnode %(id)
             print(language.id_tip)
         else:
@@ -258,10 +260,10 @@ def start_connecting(id=None,privoxy=None):
 
 
         if (path.isfile(Torrc)) and (torrconfig == open(Torrc).read()):
-            print(language.already_configured.format('TorghostNG Torrc'))
+            print(language.already_configured.format('NeoTorghost Torrc'))
             
         else:
-            print(language.configuring.format('TorghostNG Torrc'), end='', flush=True)
+            print(language.configuring.format('NeoTorghost Torrc'), end='', flush=True)
 
             with open(Torrc, mode='w') as file_torrc:
                 file_torrc.write(torrconfig)
@@ -270,7 +272,6 @@ def start_connecting(id=None,privoxy=None):
             sleep(SLEEP_TIME)
             print(language.done)
 
-        # Configure DNS resolv.conf
         if privoxy == None:
             system('systemctl stop privoxy')
             if resolvConfig == open(resolv).read():
@@ -286,7 +287,6 @@ def start_connecting(id=None,privoxy=None):
                     sleep(SLEEP_TIME)
                     print(language.done)
 
-        # Stop tor service
         check_dependencies('tor')
 
         print(language.stopping_tor, end='', flush=True)
@@ -295,7 +295,6 @@ def start_connecting(id=None,privoxy=None):
         sleep(SLEEP_TIME)
         print(language.done)
 
-        # Configure and start Privoxy
         if privoxy == True:
             check_dependencies('privoxy')
 
@@ -316,27 +315,22 @@ def start_connecting(id=None,privoxy=None):
                     
             system('systemctl start privoxy')
 
-        # Start new tor service
         check_dependencies ('tor')
 
         print(language.starting_tor, end='', flush=True)
         system('sudo -u {0} tor -f {1} > /dev/null'.format(TOR_USER, Torrc))
         sleep(SLEEP_TIME)
         print(language.done)
-
-        # Show some info
         print(language.iptables_info)
         print(language.block_bittorrent)
-
-        # Configure iptables
         print(language.setting_iptables, end='', flush=True)
         system(iptables_rules)
         sleep(SLEEP_TIME)
         print(language.done)
         
-        check_tor('failed') # Check tor connection
+        check_tor('failed')
 
-        print(language.dns_tip) # Show some info
+        print(language.dns_tip)
 
     except KeyboardInterrupt:
         print()
@@ -348,11 +342,11 @@ def start_connecting(id=None,privoxy=None):
 
 def stop_connecting():
     try:
+        Auto(False)
         check_windows_check_root()
 
         print(icon.process + ' ' + language.stop_help)
         
-        # Restore Privoxy configuration
         check_dependencies('netstat')
 
         if 'LISTEN' in getoutput('netstat -atnp | grep privoxy'):
@@ -367,7 +361,6 @@ def stop_connecting():
             sleep(SLEEP_TIME)
             print(language.done)
 
-        # Restore DNS resolv.conf configuration
         if path.isfile(resolv + '.backup') == True:
             print(language.restoring_configuration.format('DNS resolv.conf'), end='', flush=True)
 
@@ -376,7 +369,6 @@ def stop_connecting():
             sleep(SLEEP_TIME)
             print(language.done)
 
-        # Restore IPv6 configuration
         if path.isfile(Sysctl + '.backup') == True:
             print(language.restoring_configuration.format('IPv6'), end='', flush=True)
 
@@ -386,22 +378,19 @@ def stop_connecting():
             sleep(SLEEP_TIME)
             print(language.done)
 
-        # Reset iptables configuration
         print(language.flushing_iptables, end='', flush=True)
         system(IpFlush)
         system('fuser -k 9051/tcp > /dev/null 2>&1')
         sleep(SLEEP_TIME)
         print(language.done)
-
-        # Restart NetworkManager
         print(language.restarting_network, end='', flush=True)
         system('systemctl restart --now NetworkManager')
         sleep(8)
         print(language.done)
         
-        check_tor('stopped') # Check tor connection
+        check_tor('stopped')
 
-        print(language.dns_tip) # Show some info
+        print(language.dns_tip)
 
     except KeyboardInterrupt:
         print()
@@ -519,3 +508,5 @@ if __name__ == "__main__":
         
     if args.renew == True: change_tor_circuit()
 
+    if args.auto == True: Auto(True)
+    elif args.auto == False: Auto(False)
