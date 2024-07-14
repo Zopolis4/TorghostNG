@@ -20,7 +20,7 @@ To install NeoTorghost, open your terminal and enter these commands:
     git clone https://github.com/haudoudo/NeoTorghost
     cd NeoTorghost
     sudo python3 install.py
-    torghostng -h
+    neotorghost -h
     
 Alternatively, you can use it without installation by downloading `neotorghost.py`, then running it with `python3 neotorghost.py`.
 
