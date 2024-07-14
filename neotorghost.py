@@ -132,7 +132,7 @@ def check_windows_check_root(os=None):
 
         
 def check_dependencies(dependence):
-    if path.isfile("/usr/bin/" + dependence) == False:
+    if path.isfile(USRBIN + dependence) == False:
             
         if dependence == "netstat":
             dependence = "net-tools"

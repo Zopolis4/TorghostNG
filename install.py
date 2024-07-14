@@ -1,4 +1,5 @@
-from torngconf.theme import *
+from neotgconf.theme import *
+from neotgconf.configs import *
 from time import sleep
 from os import geteuid, system, path, name
 
@@ -60,6 +61,9 @@ def choose_lang(language=English):
                 file_lang.write("Vietnamese")
                 language = Vietnamese
 
+            elif choice == 3:
+                file_lang.write("German")
+
             else:
                 print()
                 print(language.invalid_choice)
@@ -80,8 +84,8 @@ def uninstall():
         
         if choice[0].upper() == "Y":
             print(language.uninstalling)
-            system('rm -rf /usr/bin/neotgconf')
-            system('rm /usr/bin/neotorghost')
+            system(f'rm -rf {USRBIN}neotgconf')
+            system(f'rm {USRBIN}neotorghost')
             print(language.uninstalled)
             
         else:
@@ -99,29 +103,29 @@ check_windows_check_root()
 banner()
 
 
-if path.isfile('/usr/bin/neotorghost') == True:
+if path.isfile(USRBIN + 'neotorghost') == True:
     print(language.already_installed.format('NeoTorghost'))
     uninstall()
 
-if path.isfile('/usr/bin/pacman') == True:
+if path.isfile(USRBIN + 'pacman') == True:
     INSTALL_PACKAGES = "pacman -S "
         
-elif path.isfile('/usr/bin/apt') == True:
+elif path.isfile(USRBIN + 'apt') == True:
     INSTALL_PACKAGES = "apt install "
     
-elif path.isfile('/usr/bin/dnf') == True:
+elif path.isfile(USRBIN + 'dnf') == True:
     INSTALL_PACKAGES = "dnf install "
         
-elif path.isfile('/usr/bin/yum') == True:
+elif path.isfile(USRBIN + 'yum') == True:
     INSTALL_PACKAGES = "yum install "
         
-elif path.isfile('/usr/bin/zypper') == True:
+elif path.isfile(USRBIN + 'zypper') == True:
     INSTALL_PACKAGES = "zypper install "
         
-elif path.isfile('/usr/bin/xbps-install') == True:
+elif path.isfile(USRBIN + 'xbps-install') == True:
     INSTALL_PACKAGES = "xbps-install -S "
         
-elif path.isfile('/usr/bin/upgradepkg') == True:
+elif path.isfile(USRBIN + 'upgradepkg') == True:
     INSTALL_PACKAGES = "upgradepkg --install-new "
 
 else:
@@ -131,13 +135,13 @@ else:
 
 def install_package(package):
     try:
-        if path.isfile('/usr/bin/'+package) == True:
+        if path.isfile(USRBIN + ''+package) == True:
             print(language.already_installed.format(package))
             
         else:
             print(language.installing.format(package))
             
-            if path.isfile('/usr/bin/upgradepkg') == True:
+            if path.isfile(USRBIN + 'upgradepkg') == True:
                 print(language.downloading.format(package))
 
                 if package == 'tor':
@@ -168,7 +172,7 @@ def install_package(package):
             print(icon.success + language.done)
             print(language.installed.format(package))
             
-            if path.isfile('/usr/bin/upgradepkg') == True:
+            if path.isfile(USRBIN + 'upgradepkg') == True:
                 print(language.neotorghost_tip.format('python3 neotorghost.py'))
                 exit()
             
@@ -180,9 +184,10 @@ def install_package(package):
 def install_neotorghost():
     try:
         print(language.installing.format('NeoTorghost'))
-        system('cp -r neotorghost.py /usr/bin && cp -r neotgconf /usr/bin && cp -r neotgutil /usr/bin/')
-        system('mv /usr/bin/neotorghost.py /usr/bin/neotorghost')
-        system('chmod +x /usr/bin/neotorghost')
+        system(f'cp -r neotorghost.py /usr/bin && cp -r neotgconf /usr/bin && cp -r neotgutil {USRBIN}')
+        system(f'mv {USRBIN}neotorghost.py {USRBIN}neotorghost')
+        system(f'chmod +x {USRBIN}neotorghost')
+        system(f'rm -rf {USRBIN}torghostng {USRBIN}torngconf')
         
         print(icon.success + language.done)
         print(language.neotorghost_tip.format('neotorghost') + color.END)
