@@ -1,19 +1,22 @@
-#!/usr/bin/python3
-
 from subprocess import getoutput
 from os import path
 
-if path.isfile('/usr/bin/apt') == True:
-    TOR_USER = 'debian-tor'
-else:
-    TOR_USER = 'tor'
-    
-Torrc = '/etc/tor/torngrc'
-resolv = '/etc/resolv.conf'
-Sysctl = '/etc/sysctl.conf'
-Privoxy = '/etc/privoxy/config'
+USRBIN = "/usr/bin/"
 
-TOR_UID = getoutput('id -ur {}'.format(TOR_USER))
+if path.isfile(USRBIN+"apt") == True:
+    TOR_USER = "debian-tor"
+else:
+    TOR_USER = "tor"
+    
+Torrc = "/etc/tor/torngrc"
+resolv = "/etc/resolv.conf"
+Sysctl = "/etc/sysctl.conf"
+Privoxy = "/etc/privoxy/config"
+
+STARTAUTO = USRBIN+"neotgutil/start.sh"
+STOPAUTO = USRBIN+"neotgutil/stop.sh"
+LANGCONF = USRBIN+"neotgconf/langconf"
+TOR_UID = getoutput("id -ur {}".format(TOR_USER))
 
 FIX_DNS = """nameserver 1.1.1.1
 nameserver 1.0.0.1
@@ -23,7 +26,7 @@ nameserver 2606:4700:4700::1001"""
 DISABLE_IPv6 = """net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1"""
 
-resolvConfig = 'nameserver 127.0.0.1'
+resolvConfig = "nameserver 127.0.0.1"
 
 privoxy_conf = """listen-address 127.0.0.1:8118
 forward-socks5 / 127.0.0.1:9040 .
@@ -95,7 +98,7 @@ export socks5_proxy=
 export socks4_proxy=
 export socks4a_proxy="""
 
-update_commands = """cd ~ && rm -rf TorghostNG
-git clone https://github.com/githacktools/TorghostNG
-cd TorghostNG
+update_commands = """cd ~ && rm -rf NeoTorghost && rm -rf neotorghost
+git clone https://github.com/haudoudo/neotorghost
+cd neotorghost
 sudo python3 install.py && sudo python3 install.py"""

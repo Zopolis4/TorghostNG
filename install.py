@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 from torngconf.theme import *
 from time import sleep
 from os import geteuid, system, path, name
@@ -22,8 +20,8 @@ def check_windows_check_root():
 
 def check_lang():
     try:
-        if path.isfile('torngconf/langconf') == True:
-            with open('torngconf/langconf') as file_lang:
+        if path.isfile('neotgconf/langconf') == True:
+            with open('neotgconf/langconf') as file_lang:
                 language = eval(file_lang.readline())
 
                 file_lang.close()
@@ -43,13 +41,13 @@ def check_lang():
         language = choose_lang()
         return language
     except FileNotFoundError:
-        print("TorghostNG is lacking its needed files. Reinstall TorghostNG from Github pls")
+        print("NeoTorghost is lacking its needed files. Reinstall NeoTorghost from Github pls")
         exit()
 
 
 def choose_lang(language=English):
     try:
-        with open('torngconf/langconf', mode="w") as file_lang:            
+        with open('neotgconf/langconf', mode="w") as file_lang:            
             print(language.language_list)
             choice = int(input(language.choose_your_lang))
             
@@ -82,12 +80,12 @@ def uninstall():
         
         if choice[0].upper() == "Y":
             print(language.uninstalling)
-            system('rm -rf /usr/bin/torngconf')
-            system('rm /usr/bin/torghostng')
+            system('rm -rf /usr/bin/neotgconf')
+            system('rm /usr/bin/neotorghost')
             print(language.uninstalled)
             
         else:
-            print(language.torghostng_tip.format('torghostng') + color.END)
+            print(language.neotorghost_tip.format('neotorghost') + color.END)
             
         exit()
             
@@ -101,8 +99,8 @@ check_windows_check_root()
 banner()
 
 
-if path.isfile('/usr/bin/torghostng') == True:
-    print(language.already_installed.format('TorghostNG'))
+if path.isfile('/usr/bin/neotorghost') == True:
+    print(language.already_installed.format('NeoTorghost'))
     uninstall()
 
 if path.isfile('/usr/bin/pacman') == True:
@@ -171,7 +169,7 @@ def install_package(package):
             print(language.installed.format(package))
             
             if path.isfile('/usr/bin/upgradepkg') == True:
-                print(language.torghostng_tip.format('python3 torghostng.py'))
+                print(language.neotorghost_tip.format('python3 neotorghost.py'))
                 exit()
             
     except KeyboardInterrupt:
@@ -179,15 +177,15 @@ def install_package(package):
         exit()
 
 
-def install_torghostng():
+def install_neotorghost():
     try:
-        print(language.installing.format('TorghostNG'))
-        system('cp -r torghostng.py /usr/bin && cp -r torngconf /usr/bin')
-        system('mv /usr/bin/torghostng.py /usr/bin/torghostng')
-        system('chmod +x /usr/bin/torghostng')
+        print(language.installing.format('NeoTorghost'))
+        system('cp -r neotorghost.py /usr/bin && cp -r neotgconf /usr/bin && cp -r neotgutil /usr/bin/')
+        system('mv /usr/bin/neotorghost.py /usr/bin/neotorghost')
+        system('chmod +x /usr/bin/neotorghost')
         
         print(icon.success + language.done)
-        print(language.torghostng_tip.format('torghostng') + color.END)
+        print(language.neotorghost_tip.format('neotorghost') + color.END)
         
     except KeyboardInterrupt:
         print()
@@ -198,5 +196,5 @@ packages = ['tor','macchanger','privoxy','netstat','curl']
 for package in packages:
     install_package(package)
 
-install_torghostng()
+install_neotorghost()
 exit()
