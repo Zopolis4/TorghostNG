@@ -100,7 +100,7 @@ def choose_lang(language=English):
                 file_lang.write("Vietnamese")
                 
             elif choice == 3:
-                lannguage = German
+                language = German
                 file_lang.write("German")
                 
             else:
